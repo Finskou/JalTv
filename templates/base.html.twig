@@ -13,7 +13,7 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}
+        
         <nav class="navbar  navbar-expand-lg navbar-dark red" >
             <a class="navbar-brand" width="30" href="https://www.youtube.com/channel/UC8tOFUBOuIfVxtKD82HhKvA" style="position:relative; "><img src="img/unnamed.jpg" alt="" class="logo" /></a>
             
@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="basicExampleNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="?action=politique">Politique
+                    <a class="nav-link" href="/blog">Politique
                         <span class="sr-only"></span>
                     </a>
                 </li>
@@ -52,7 +52,7 @@
                     <a class="nav-link" href="?action=contact">Contact</a>
                 </li>
                 <li class="nav-item ml-5">
-                    <a class="nav-link" href="?action=connexion">Connexion</a>
+                    <a class="nav-link" href="/">Connexion</a>
                 </li>
             </ul>
  
@@ -63,7 +63,10 @@
             </form>
         </div>
     </nav>
-    {% endblock %}
+    <div class="container">
+        {% block body %}
+        {% endblock %}
+    </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

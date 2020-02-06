@@ -18,9 +18,18 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("", name="home")
+     * @Route("/", name="home")
      */
     public function home(){
-        return $this->render('blog/home.html.twig');
+        return $this->render('blog/home.html.twig', [
+            'title' => 'Titre à Définir pour Jaalal', 
+        ]);
+    }
+
+    /**
+     * @Route("/blog/12", name="blog_show")
+     */
+    public function show(){
+        return $this->render('blog/show.html.twig');
     }
 }
