@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="Ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Jaalal TVV{% endblock %}</title>
+        {% block stylesheets %}
+        <link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        <nav class="navbar  navbar-expand-lg navbar-dark red" >
+            <a class="navbar-brand" width="30" href="https://www.youtube.com/channel/UC8tOFUBOuIfVxtKD82HhKvA" style="position:relative; "><img src="img/unnamed.jpg" alt="" class="logo" /></a>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="?action=politique">Politique
+                        <span class="sr-only"></span>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown ml-5">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"                     aria-haspopup="true" aria-expanded="false">Emissions</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="?action=video">Vidéos</a>
+                        <a class="dropdown-item" href="?action=audio">Audios</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown ml-5">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Informations</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="?action=national">National</a>
+                        <a class="dropdown-item" href="?action=international">International</a> 
+                    </div>
+                </li>
+                
+                <li class="nav-item ml-5">
+                    <a class="nav-link" href="?action=contact">Contact</a>
+                </li>
+                <li class="nav-item ml-5">
+                    <a class="nav-link" href="?action=connexion">Connexion</a>
+                </li>
+            </ul>
+ 
+            <form class="form-inline">
+                <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                </div>
+            </form>
+        </div>
+    </nav>
+    {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

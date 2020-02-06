@@ -1,0 +1,41 @@
+
+/********************************Navbar*******************/
+
+body{
+  background-image: url('../vue/img/drapeau.jpg');
+}
+.logo {
+  border-radius: 50%;
+  height:auto;
+  width:50%;
+  border: 5px solid #f44336;
+}
+
+.dropdown-item:hover {
+  background-color:red;
+}
+
+.nav-item:hover{
+  opacity: 1;
+  font-weight:200;
+}
+
+.nav-item {
+  opacity: .6;
+}
+
+.navbar{
+  margin-top: 8vh !important;
+  height: 10vh !important;
+}
+
+/********************Acceuil**********************/
+.acc {
+  margin-top: 8rem;
+}
+
+.thumbnail {
+  width:40%;
+  height:auto;
+  float:right;
+}
