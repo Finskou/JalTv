@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends AbstractController
 {
@@ -31,6 +32,23 @@ class BlogController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/blog/new", name="blog_create")
+     */
+    public function create(Request $request){
+        return $this->render('blog/create.html.twig', [
+            'title' => "Création d'un article"
+        ]);
+
+        if($request->request->count() > 0){
+            $article = new Article();
+            $article->setTitle($request->request->get('title'))->setContent($request->request->get('content'))->setImage($request->request->get('image'));
+            return $article;
+        }
+    }
+
+
     /**
      * @Route("/blog/{id}", name="blog_show")
      */
@@ -41,4 +59,7 @@ class BlogController extends AbstractController
         
         return $this->render('blog/show.html.twig', ['article' => $article ]);
     }
+
+
+
 }

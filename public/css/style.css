@@ -45,4 +45,13 @@ body{
 .article{
   margin-top:15vh;
   padding:15px;
+  width: 500px;
+}
+
+
+
+.foorm{
+ padding:25px;
+ display:flex;
+ flex-direction:column;
 }

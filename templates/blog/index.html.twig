@@ -12,9 +12,9 @@
             <h2>{{ article.title }}</h2>
             <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Politique</div>
             <div class="content" style="display:flex;flex-direction:column">
-                <img src="{{ article.image }}" alt="">
+                <img style="width:35%; height:auto" src="{{ article.image }}" alt="">
                 {{ article.content }}
-                <a href="{{ path('blog_show', {'id':article.id}) }}" class="btn btn-parimary"> Lire la suite</a>
+                <a href="{{ path('blog_show', {'id':article.id}) }}" class="btn btn-parimary w-50"> Lire la suite</a>
             </div>
         </div>
     </article>
