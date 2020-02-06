@@ -6,43 +6,18 @@
     <link href="../public/css/style.css" rel="stylesheet">
 {% endblock %}
 {% block body %}
+
+{% for article in articles %}
     <article>
         <div class="card article">
-            <h2>TItre de l'article</h2>
-            <div class="metadata"> Ecrit le 01/01/01 à 10:00 dans la catégorie Politique</div>
+            <h2>{{ article.title }}</h2>
+            <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Politique</div>
             <div class="content">
-                <img src="" alt="">
-                <p> Commodo nulla reprehenderit amet sit elit excepteur do magna mollit cupidatat reprehenderit enim. Est dolore consequat sunt consequat cillum sit mollit non. Nostrud ipsum irure anim nulla proident aliquip officia occaecat voluptate aliqua et.</p>
-
+                <img src="{{ article.image }}" alt="">
+                {{ article.content }}
                 <a href="{{ path('blog_show') }}" class="btn btn-parimary"> Lire la suite</a>
             </div>
         </div>
     </article>
-
-    <article>
-        <div class="card article">
-            <h2>TItre de l'article</h2>
-            <div class="metadata"> Ecrit le 01/01/01 à 10:00 dans la catégorie Politique</div>
-            <div class="content">
-                <img src="" alt="">
-                <p> Commodo nulla reprehenderit amet sit elit excepteur do magna mollit cupidatat reprehenderit enim. Est dolore consequat sunt consequat cillum sit mollit non. Nostrud ipsum irure anim nulla proident aliquip officia occaecat voluptate aliqua et.</p>
-
-                <a href="{{ path('blog_show') }}" class="btn btn-parimary"> Lire la suite</a>
-            </div>
-        </div>
-    </article>  
-
-    <article>
-        <div class="card article">
-            <h2>TItre de l'article</h2>
-            <div class="metadata"> Ecrit le 01/01/01 à 10:00 dans la catégorie Politique</div>
-            <div class="content">
-                <img src="" alt="">
-                <p> Commodo nulla reprehenderit amet sit elit excepteur do magna mollit cupidatat reprehenderit enim. Est dolore consequat sunt consequat cillum sit mollit non. Nostrud ipsum irure anim nulla proident aliquip officia occaecat voluptate aliqua et.</p>
-
-                <a href="{{ path('blog_show') }}" class="btn btn-parimary"> Lire la suite</a>
-            </div>
-        </div>
-    </article>      
-
+{% endfor %}
 {% endblock %}
