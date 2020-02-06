@@ -1,4 +1,8 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent()}}
+    <link href="../public/css/style.css" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
   <article>
@@ -6,14 +10,7 @@
         <div class="metadata"> Ecrit le {{ article.createdAt| date('d/m/Y')}} à {{ article.createdAt | date('H:i') }} dans la catégorie Politique</div>
         <div class="content">
             <img src="{{ article.image }}" alt="">
-            <p> Commodo nulla reprehenderit amet sit elit excepteur do magna mollit cupidatat reprehenderit enim. Est dolore consequat sunt consequat cillum sit mollit non. Nostrud ipsum irure anim nulla proident aliquip officia occaecat voluptate aliqua et.</p>
-
-            <p>Velit consectetur et elit sit tempor voluptate. Anim do dolor officia esse. Cupidatat cillum Lorem pariatur occaecat cillum minim qui est. Ad in voluptate enim magna do. Sunt enim dolor ullamco elit consectetur do nulla incididunt sit eiusmod.</p>
-
-            <p>Elit nulla dolore non voluptate. Nulla aute nulla sit proident veniam amet nulla amet culpa in eu. Ipsum culpa consequat irure nisi ea Lorem laboris sunt.</p>
-            <hr>
-            <p>Laboris minim ad sint nostrud nostrud Lorem aute veniam duis ad. Culpa ut cupidatat nulla laborum amet et magna minim. Consequat nostrud occaecat sint voluptate sunt non adipisicing officia. Tempor laboris ut non esse dolore. Aliqua duis esse consequat velit enim occaecat proident ad excepteur ea do. Id laboris dolor ea deserunt ex mollit sit proident laborum aliquip cillum dolore commodo nostrud. Sit aute do proident qui eu mollit irure nostrud cupidatat dolore.</p>
+            {{ article.content | raw }}
         </div>
     </article>   
-
-    {% end block %}
+{% endblock %}
