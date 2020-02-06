@@ -39,3 +39,10 @@ body{
   height:auto;
   float:right;
 }
+
+
+/**********************Blog**************/
+.article{
+  margin-top:15vh;
+  padding:15px;
+}
