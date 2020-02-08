@@ -2,21 +2,9 @@
 
 {% block body %}
 
-  <h1 style="color:white"> {{ title }}</h1>
+  <h1 style="color:white"> Test</h1>
 
   <div class="card d-flex justify-content-center foorm">
-    <form action="" method="post">
-    <div class="md-form w-100">
-      <input type="text" class="w-100" name="title" placeholder="Titre de l'article">
-    </div>
-    <div class="md-form w-100">
-      <textarea type="text" class="w-100 md-textarea" name="content" placeholder="Contenu de l'article"></textarea>
-    </div>
-    <div class="md-form w-100" >
-      <input type="text" name="image" placeholder="Image de l'article">
-    </div>
-      <button class="btn btn-danger" type="submit"> Enregistrer </button>
-
-    </form>
+    {{ form(form) }}
   </div>
 {% endblock %}

@@ -2,20 +2,21 @@
 
 namespace App\Controller;
 
+use App\Entity\Task;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Article;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\ArticleRepository;
+use App\Entity\Article;
+use App\Form\Type\TaskType;
 
 class BlogController extends AbstractController
 {
     /**
      * @Route("/blog", name="blog")
      */
-    public function index()
+    public function index(ArticleRepository $repo)
     {
-        $repo=$this->getDoctrine()->getRepository(Article::class);
-
         $articles = $repo->findAll();
 
         return $this->render('blog/index.html.twig', [
@@ -36,27 +37,24 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog/new", name="blog_create")
      */
-    public function create(Request $request){
-        return $this->render('blog/create.html.twig', [
-            'title' => "Création d'un article"
-        ]);
+    public function create(){
 
-        if($request->request->count() > 0){
-            $article = new Article();
-            $article->setTitle($request->request->get('title'))->setContent($request->request->get('content'))->setImage($request->request->get('image'));
-            return $article;
-        }
+        $task = new Task();
+        $task->setTitle('premier titre');
+        $task->setContent('premier contenu');
+        $task->setImage('première image');
+        $task->setCreatedAt(new \Datetime());
+
+        $form = $this->createForm(TaskType::class, $task);
+
+        return $this->render('blog/create.html.twig', ['form' => $form->createView()]);
     }
 
 
     /**
      * @Route("/blog/{id}", name="blog_show")
      */
-    public function show($id){
-        $repo = $this->getDoctrine()->getRepository(Article::class);
-
-        $article=$repo->find($id);
-        
+    public function show(Article $article){
         return $this->render('blog/show.html.twig', ['article' => $article ]);
     }
 
