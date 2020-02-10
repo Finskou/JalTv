@@ -2,13 +2,18 @@
 
 namespace App\Controller;
 
-use App\Entity\Task;
 use App\Entity\Article;
-use App\Form\Type\TaskType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use App\Repository\ArticleRepository;
+
+
 
 class BlogController extends AbstractController
 {
@@ -33,27 +38,37 @@ class BlogController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/security/login", name="login")
+     */
+    public function login() {
+        return $this->render('security/login.html.twig');
+    }
 
     /**
      * @Route("/blog/new", name="blog_create")
      */
     public function create(Request $request){
 
-        $task = new Task();
-        $form = $this->createForm(TaskType::class, $task);
-        //$form = $this->createFormBuilder($task)->setAction($this->generateUrl('target_route'))->setMethod('GET')//->getForm();
-
-
-        $form->handleRequest($request);
+        $art = new Article();
+        $form = $this->createFormBuilder($art)
+                    ->add('title', TextType::class)
+                    ->add('contenu', TextareaType::class)
+                    ->add('image', FileType::class)
+                    ->add('save', SubmitType::class)
+                    ->getForm();
+       
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $task = $form->getData();
-            //if Task is a Doctrine entity, save it!
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($task);
-            $entityManager->flush();
+            $art = $form->getData();
+            $art->persist($art);
+            $art->flush();
+            //enregistrer l'entité avec doctrine
+            // $entityManager = $this->getDoctrine()->getManager();
+            // $entityManager->persist($task);
+            // $entityManager->flush();
 
-            return $this->redirectToRoute('task_success');
+            return $this->redirectToRoute('blog_create');
         }
 
         return $this->render('blog/create.html.twig', [
