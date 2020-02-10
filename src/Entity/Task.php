@@ -3,17 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
  */
 class Task
 {
-    /**
-     * @Assert\NotBlank
-     */
-    public $task;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -32,7 +28,7 @@ class Task
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
      */
     private $image;
 
@@ -75,12 +71,13 @@ class Task
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(string $image) : self
     {
         $this->image = $image;
 
         return $this;
     }
+    
 
     public function getCreatedAt(): ?\DateTimeInterface
     {

@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ArticleRepository;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
 
 class BlogController extends AbstractController
 {
@@ -41,19 +44,18 @@ class BlogController extends AbstractController
 
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
-        //$form = $this->createFormBuilder($task)->setAction($this->generateUrl('target_route'))->setMethod('GET')//->getForm();
-
-
-        $form->handleRequest($request);
+       
 
         if ($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
-            //if Task is a Doctrine entity, save it!
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($task);
-            $entityManager->flush();
+            $task->persist($task);
+            $task->flush();
+            //enregistrer l'entité avec doctrine
+            // $entityManager = $this->getDoctrine()->getManager();
+            // $entityManager->persist($task);
+            // $entityManager->flush();
 
-            return $this->redirectToRoute('task_success');
+            return $this->redirectToRoute('blog_create');
         }
 
         return $this->render('blog/create.html.twig', [
