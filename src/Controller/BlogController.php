@@ -34,7 +34,12 @@ class BlogController extends AbstractController
         ]);
     }
 
-
+    /**
+     * @Route("/security/login", name="login")
+     */
+    public function login() {
+        return $this->render('security/login.html.twig');
+    }
     /**
      * @Route("/blog/new", name="blog_create")
      */
