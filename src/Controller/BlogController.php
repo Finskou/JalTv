@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Entity\Article;
+use App\Form\Type\TaskType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ArticleRepository;
-use App\Entity\Article;
-use App\Form\Type\TaskType;
 
 class BlogController extends AbstractController
 {
@@ -37,17 +37,28 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog/new", name="blog_create")
      */
-    public function create(){
+    public function create(Request $request){
 
         $task = new Task();
-        $task->setTitle('premier titre');
-        $task->setContent('premier contenu');
-        $task->setImage('première image');
-        $task->setCreatedAt(new \Datetime());
-
         $form = $this->createForm(TaskType::class, $task);
+        //$form = $this->createFormBuilder($task)->setAction($this->generateUrl('target_route'))->setMethod('GET')//->getForm();
 
-        return $this->render('blog/create.html.twig', ['form' => $form->createView()]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $task = $form->getData();
+            //if Task is a Doctrine entity, save it!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('task_success');
+        }
+
+        return $this->render('blog/create.html.twig', [
+            'form' => $form->createView()
+            ]);
     }
 
 

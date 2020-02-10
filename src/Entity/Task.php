@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
  */
 class Task
 {
+    /**
+     * @Assert\NotBlank
+     */
+    public $task;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
