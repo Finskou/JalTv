@@ -32,6 +32,10 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            if(true === $form['agreeTerms']->getData()){
+                $user->agreeTerms();
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

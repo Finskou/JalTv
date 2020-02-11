@@ -53,7 +53,7 @@ class BlogController extends AbstractController
         $art = new Article();
         $form = $this->createFormBuilder($art)
                     ->add('title', TextType::class)
-                    ->add('contenu', TextareaType::class)
+                    ->add('content', TextareaType::class)
                     ->add('image', FileType::class)
                     ->add('save', SubmitType::class)
                     ->getForm();
@@ -64,9 +64,9 @@ class BlogController extends AbstractController
             $art->persist($art);
             $art->flush();
             //enregistrer l'entité avec doctrine
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($task);
-            // $entityManager->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($art);
+            $entityManager->flush();
 
             return $this->redirectToRoute('blog_create');
         }
