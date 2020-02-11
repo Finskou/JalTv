@@ -51,15 +51,17 @@
                 <li class="nav-item ml-5">
                     <a class="nav-link" href="">Contact</a>
                 </li>
+                {% if app.user == null %}
                 <li class="nav-item ml-5">
                     <a class="nav-link" href="{{ path('login') }}">Connexion</a>
                 </li>
+                {% endif %}
                 {% if app.user %}
                 <li class="nav-item ml-5">
                     <a class="nav-link" href="{{ path('blog_create') }}">New</a>
                 </li>
                 <li class="nav-item ml-5">
-                    <a href="{{ path('app_logout') }}">Logout</a>
+                    <a class="nav-link bold" href="{{ path('app_logout') }}">Logout</a>
                 </li>
                 {% endif %}
             </ul>
