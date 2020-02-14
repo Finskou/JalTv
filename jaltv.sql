@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 10 fév. 2020 à 20:55
+-- Généré le :  ven. 14 fév. 2020 à 15:02
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.11
 
@@ -33,24 +33,25 @@ CREATE TABLE `article` (
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL,
+  `idCategory` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `article`
 --
 
-INSERT INTO `article` (`id`, `title`, `content`, `image`, `created_at`) VALUES
-(1, 'Titre de l\'article 1', 'Contenu de l\'article n 1', 'https://via.placeholder.com/150', '2020-02-06 16:14:10'),
-(2, 'Titre de l\'article 2', 'Contenu de l\'article n 2', 'https://via.placeholder.com/150', '2020-02-06 16:14:10'),
-(3, 'Titre de l\'article 3', 'Contenu de l\'article n 3', 'https://via.placeholder.com/150', '2020-02-06 16:14:10'),
-(4, 'Titre de l\'article 4', 'Contenu de l\'article n 4', 'https://via.placeholder.com/150', '2020-02-06 16:14:10'),
-(5, 'Titre de l\'article 5', 'Contenu de l\'article n 5', 'https://via.placeholder.com/150', '2020-02-06 16:14:10'),
-(6, 'Titre de l\'article 6', 'Contenu de l\'article n 6', 'https://via.placeholder.com/150', '2020-02-06 16:14:10'),
-(7, 'Titre de l\'article 7', 'Contenu de l\'article n 7', 'https://via.placeholder.com/150', '2020-02-06 16:14:10'),
-(8, 'Titre de l\'article 8', 'Contenu de l\'article n 8', 'https://via.placeholder.com/150', '2020-02-06 16:14:10'),
-(9, 'Titre de l\'article 9', 'Contenu de l\'article n 9', 'https://via.placeholder.com/150', '2020-02-06 16:14:10'),
-(10, 'Titre de l\'article 10', 'Contenu de l\'article n 10', 'https://via.placeholder.com/150', '2020-02-06 16:14:10');
+INSERT INTO `article` (`id`, `title`, `content`, `image`, `created_at`, `idCategory`) VALUES
+(41, 'Titre de l\'article 1', 'Contenu de l\'article n 1', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL),
+(42, 'Titre de l\'article 2', 'Contenu de l\'article n 2', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL),
+(43, 'Titre de l\'article 3', 'Contenu de l\'article n 3', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL),
+(44, 'Titre de l\'article 4', 'Contenu de l\'article n 4', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL),
+(45, 'Titre de l\'article 5', 'Contenu de l\'article n 5', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL),
+(46, 'Titre de l\'article 6', 'Contenu de l\'article n 6', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL),
+(47, 'Titre de l\'article 7', 'Contenu de l\'article n 7', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL),
+(48, 'Titre de l\'article 8', 'Contenu de l\'article n 8', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL),
+(49, 'Titre de l\'article 9', 'Contenu de l\'article n 9', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL),
+(50, 'Titre de l\'article 10', 'Contenu de l\'article n 10', 'https://via.placeholder.com/150', '2020-02-14 14:13:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -99,6 +100,13 @@ CREATE TABLE `user` (
 ) ;
 
 --
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `roles`, `password`, `username`) VALUES
+(3, 'admin@gmail.com', '[]', '$argon2id$v=19$m=65536,t=4,p=1$NFZkOUdoTVoucmttL2swZQ$QVEBWz7u/Sx71m/5pGS0AzeTOE654xbdZf8W4dCeCvY', 'admin');
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -106,7 +114,8 @@ CREATE TABLE `user` (
 -- Index pour la table `article`
 --
 ALTER TABLE `article`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idCategory` (`idCategory`);
 
 --
 -- Index pour la table `category`
@@ -128,7 +137,7 @@ ALTER TABLE `migration_versions`
 -- AUTO_INCREMENT pour la table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT pour la table `category`
