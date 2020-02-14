@@ -3,6 +3,7 @@
 
 {% block body %}
   <article class="container mt-5">
+    <a href="{{ path('blog') }}" class=" btn btn-outline-danger">Retour</a>
         <center><h2> {{ article.title }}</h2></center>
         <hr>
         <div class="metadata"><center><em> Ecrit le {{ article.createdAt| date('d/m/Y')}} à {{ article.createdAt | date('H:i') }} dans la catégorie Politique</em></center></div>

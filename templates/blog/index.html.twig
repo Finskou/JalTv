@@ -9,8 +9,8 @@
 {% for article in articles %}
     <article>
         <div class="card article">
-            <h2>{{ article.title }}</h2>
-            <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie Politique</div>
+            <center><h2>{{ article.title }}</h2></center>
+            <div class="metadata"> Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie </div>
             <div class="content" style="display:flex;flex-direction:column">
                 <img style="width:35%; height:auto" src="{{ article.image }}" alt="">
                 {{ article.content }}
