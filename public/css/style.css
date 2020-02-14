@@ -1,9 +1,10 @@
 
 /********************************Navbar*******************/
 
-body{
+body {
   background-image: url('../vue/img/drapeau.jpg');
 }
+
 .logo {
   border-radius: 50%;
   height:auto;
@@ -47,8 +48,6 @@ body{
   padding:15px;
   width: 500px;
 }
-
-
 
 .foorm{
  padding:25px;

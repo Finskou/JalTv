@@ -80,7 +80,16 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog/{id}", name="blog_show")
      */
-    public function show(Article $article){
+    public function show($id){
+        $article = $this->getDoctrine()
+                        ->getRepository(Article::class)
+                        ->find($id);
+        if (!$article) {
+            throw $this->createNotFoundException(
+                'No article found for id ' .$id
+            );
+        }
+        
         return $this->render('blog/show.html.twig', ['article' => $article ]);
     }
 

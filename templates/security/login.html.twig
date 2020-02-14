@@ -16,7 +16,7 @@
         {% endif %}
 
         <input for="inputEmail" placeholder="Email" type="email" name="email" id="inputEmail" class="form-control mt-3" required autofocus><br>
-        <input for="inputPassword" placeholder="Password" type="password" name="password" id="inputPassword" class="form-control" required>
+        <input for="inputPassword" placeholder="Mot de passe" type="password" name="password" id="inputPassword" class="form-control" required>
 
         <input type="hidden" name="_csrf_token"
             value="{{ csrf_token('authenticate') }}"
